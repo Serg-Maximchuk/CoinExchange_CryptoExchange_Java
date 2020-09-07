@@ -189,25 +189,25 @@ public class CoinExchangeRate {
 	        }
         }
         
-        // Huobi Otc接口（如抹茶接口无效则走此路径）
-        String url2 = "https://otc-api-sz.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=";
-        HttpResponse<JsonNode> resp2 = Unirest.get(url2)
-                .asJson();
-        if(resp2.getStatus() == 200) { //正确返回
-        	JSONObject ret2 = JSON.parseObject(resp2.getBody().toString());
-	        if(ret2.getIntValue("code") == 200) {
-	        	JSONArray arr = ret2.getJSONArray("data");
-	        	if(arr.size() > 0) {
-	        		JSONObject obj = arr.getJSONObject(0);
-	        		setUsdtCnyRate(new BigDecimal(obj.getDouble("price")).setScale(2, RoundingMode.HALF_UP));
-	        		return;
-	        	}
-	        }
-        }
+//        // Huobi Otc接口（如抹茶接口无效则走此路径）
+//        String url2 = "https://otc-api-sz.eiijo.cn/v1/data/trade-market?coinId=2&currency=1&tradeType=sell&currPage=1&payMethod=0&country=37&blockType=general&online=1&range=0&amount=";
+//        HttpResponse<JsonNode> resp2 = Unirest.get(url2)
+//                .asJson();
+//        if(resp2.getStatus() == 200) { //正确返回
+//        	JSONObject ret2 = JSON.parseObject(resp2.getBody().toString());
+//	        if(ret2.getIntValue("code") == 200) {
+//	        	JSONArray arr = ret2.getJSONArray("data");
+//	        	if(arr.size() > 0) {
+//	        		JSONObject obj = arr.getJSONObject(0);
+//	        		setUsdtCnyRate(new BigDecimal(obj.getDouble("price")).setScale(2, RoundingMode.HALF_UP));
+//	        		return;
+//	        	}
+//	        }
+//        }
         
         // Okex Otc接口
         String url3 = "https://www.okex.me/v3/c2c/tradingOrders/book?t=1566269221580&side=sell&baseCurrency=usdt&quoteCurrency=cny&userType=certified&paymentMethod=all";
-        HttpResponse<JsonNode> resp3 = Unirest.get(url2)
+        HttpResponse<JsonNode> resp3 = Unirest.get(url3)
                 .asJson();
         if(resp3.getStatus() == 200) { //正确返回
         	JSONObject ret3 = JSON.parseObject(resp3.getBody().toString());

@@ -11,7 +11,7 @@ import com.mongodb.Cursor;
 import com.mongodb.DBObject;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.bson.types.Decimal128;
 import org.eclipse.jdt.internal.compiler.ast.FieldReference;
 import org.springframework.beans.factory.annotation.Autowired;

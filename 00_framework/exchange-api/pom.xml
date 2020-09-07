@@ -76,11 +76,11 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
-			<groupId>com.sparkframework</groupId>
-			<artifactId>spark-core</artifactId>
-			<scope>system</scope>
-			<systemPath>E:/10_Exchange/src/BizzanExchange_framework/jar/spark-core-2.6.0.jar</systemPath>
-		</dependency>
+            <groupId>com.sparkframework</groupId>
+            <artifactId>spark-core</artifactId>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/spark-core-2.6.0.jar</systemPath>
+        </dependency>
     </dependencies>
     <profiles>
         <profile>
